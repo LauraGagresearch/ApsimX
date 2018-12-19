@@ -326,8 +326,12 @@
         {
             if (!hasRun)
                 return;
+
+            // Select from "report" may need to be modified here to look for tables with other names
             string sql = "SELECT * FROM REPORT WHERE SimulationName LIKE '" + Name + "%' ORDER BY SimulationID";
             DataTable predictedData = dataStore.RunQuery(sql);
+            //if the report table is not found then this will return null and skip the below
+
             if (predictedData != null)
             {
 
